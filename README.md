@@ -32,13 +32,39 @@ O objetivo é simular um ambiente de produção real, demonstrando as seguintes 
 * `Dockerfile`: Para construir a imagem da aplicação.
 * `deployment.yml`: O manifesto Kubernetes que define o `Deployment` (3 réplicas) e o `Service` (LoadBalancer) para rodar a aplicação no cluster.
 * `.github/workflows/ci-pipeline.yml`: O workflow do GitHub Actions que automaticamente constrói e publica a imagem no Docker Hub a cada `push` na branch `main`.
+* `images/`: Pasta contendo as capturas de tela do projeto.
 
 ---
 
-## 🔄 Fluxo do CI/CD
+## 📸 Resultados e Demonstrações Visuais
 
-1.  Um `git push` é feito para a branch `main`.
-2.  O GitHub Actions é acionado (baseado no `ci-pipeline.yml`).
-3.  A action faz o login no Docker Hub (usando segredos).
-4.  A imagem Docker é construída (`docker build`).
-5.  A imagem é enviada (`docker push`) para o Docker Hub com a tag `latest`.
+### Fase 1: Aplicação Dockerizada
+
+Aplicação Flask "Olá, SRE!" rodando localmente em um container Docker.
+![Aplicação Flask em Docker](images/flask-local.png)
+
+### Fase 2: CI/CD com GitHub Actions
+
+Workflow do GitHub Actions configurado para build e push da imagem Docker.
+![GitHub Actions Workflow](images/github-actions-workflow.png)
+
+Imagem da aplicação publicada com sucesso no Docker Hub.
+![Imagem no Docker Hub](images/docker-hub-image.png)
+
+### Fase 3: Cluster EKS na AWS
+
+Criação e status do cluster Kubernetes (EKS) na console da AWS.
+![Cluster EKS Active](images/eks-cluster-active.png)
+
+### Fase 4: Deploy no Kubernetes
+
+Serviço Kubernetes do tipo LoadBalancer expondo a aplicação para a internet.
+![Kubernetes Service External IP](images/kube-service-external-ip.png)
+
+Aplicação "Olá, SRE!" acessível via o LoadBalancer da AWS.
+![Aplicação em Produção no EKS](images/flask-eks-production.png)
+
+### Fase 5: Limpeza do Ambiente
+
+Confirmação da remoção de todos os recursos do cluster EKS.
+![EKS Cluster Deleted](images/eks-cluster-deleted.png)
