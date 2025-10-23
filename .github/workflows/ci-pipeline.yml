@@ -1,0 +1,34 @@
+# Nome do workflow
+name: CI - Build e Push da Imagem Docker
+
+# roda toda vez que dermos 'push' na branch 'main'
+on:
+  push:
+    branches: [ "main" ]
+
+# Tarefas: O que ele deve fazer?
+jobs:
+  build-e-push:
+    # Rodar em uma máquina virtual Ubuntu
+    runs-on: ubuntu-latest 
+
+    steps:
+      # 1. Baixa o nosso código (git checkout)
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      # 2. Faz o login no Docker Hub
+      - name: Login no Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # 3. Constrói a imagem e faz o push
+      - name: Build e push para Docker Hub
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          # IMPORTANTE: Altere 'SEU-USUARIO-DOCKERHUB' abaixo!
+          tags: devirosana/minha-app-sre:latest
