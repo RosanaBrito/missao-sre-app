@@ -31,4 +31,4 @@ jobs:
           context: .
           push: true
           # IMPORTANTE: Altere 'SEU-USUARIO-DOCKERHUB' abaixo!
-          tags: 'SEU-USUARIO-DOCKERHUB'/minha-app-sre:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/minha-app-sre:latest
