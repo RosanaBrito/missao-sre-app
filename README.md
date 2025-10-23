@@ -41,30 +41,30 @@ O objetivo é simular um ambiente de produção real, demonstrando as seguintes 
 ### Fase 1: Aplicação Dockerizada
 
 Aplicação Flask "Olá, SRE!" rodando localmente em um container Docker.
-![Aplicação Flask em Docker](images/flask-local.png)
+![Aplicação Flask em Docker](images/flask-local.jpg)
 
 ### Fase 2: CI/CD com GitHub Actions
 
 Workflow do GitHub Actions configurado para build e push da imagem Docker.
-![GitHub Actions Workflow](images/github-actions-workflow.png)
+![GitHub Actions Workflow](images/github-actions-workflow.jpg)
 
 Imagem da aplicação publicada com sucesso no Docker Hub.
-![Imagem no Docker Hub](images/docker-hub-image.png)
+![Imagem no Docker Hub](images/docker-hub-image.jpg)
 
 ### Fase 3: Cluster EKS na AWS
 
 Criação e status do cluster Kubernetes (EKS) na console da AWS.
-![Cluster EKS Active](images/eks-cluster-active.png)
+![Cluster EKS Active](images/eks-cluster-active.jpg)
 
 ### Fase 4: Deploy no Kubernetes
 
 Serviço Kubernetes do tipo LoadBalancer expondo a aplicação para a internet.
-![Kubernetes Service External IP](images/kube-service-external-ip.png)
+![Kubernetes Service External IP](images/kube-service-external-ip.jpg)
 
 Aplicação "Olá, SRE!" acessível via o LoadBalancer da AWS.
-![Aplicação em Produção no EKS](images/flask-eks-production.png)
+![Aplicação em Produção no EKS](images/flask-eks-production.jpg)
 
 ### Fase 5: Limpeza do Ambiente
 
 Confirmação da remoção de todos os recursos do cluster EKS.
-![EKS Cluster Deleted](images/eks-cluster-deleted.png)
+![EKS Cluster Deleted](images/eks-cluster-deleted.jpg)
