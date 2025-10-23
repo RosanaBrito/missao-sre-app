@@ -1,0 +1,36 @@
+---
+# Parte 1: O DEPLOYMENT (O que rodar)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minha-app-sre-deployment
+spec:
+  replicas: 3  # Queremos 3 cópias rodando para alta disponibilidade
+  selector:
+    matchLabels:
+      app: minha-app-sre
+  template:
+    metadata:
+      labels:
+        app: minha-app-sre
+    spec:
+      containers:
+      - name: minha-app-container
+        image: devirosana/minha-app-sre:latest 
+        ports:
+        - containerPort: 5000 # A porta que o Flask está rodando
+
+---
+# Parte 2: O SERVICE (Como expor)
+apiVersion: v1
+kind: Service
+metadata:
+  name: minha-app-sre-service
+spec:
+  type: LoadBalancer # Isso pede um Load Balancer da AWS
+  selector:
+    app: minha-app-sre # Conecta este serviço aos Pods com esta label
+  ports:
+  - protocol: TCP
+    port: 80         # Porta pública (do Load Balancer)
+    targetPort: 5000 # Porta do container (onde o Flask está)
