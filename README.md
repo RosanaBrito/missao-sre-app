@@ -67,4 +67,4 @@ Aplicação "Olá, SRE!" acessível via o LoadBalancer da AWS.
 ### Fase 5: Limpeza do Ambiente
 
 Confirmação da remoção de todos os recursos do cluster EKS.
-![EKS Cluster Deleted](images/eks-cluster-deleted.jpg)
+![EKS Cluster Deleted](images/eks-cluster-deleted.png)
